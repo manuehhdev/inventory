@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inventario Saiyajin</title>
+    <link rel="stylesheet" href="src/style.css" />
+    <style>
+      @media print {
+        body * {
+          visibility: hidden;
+        }
+
+        #print-area,
+        #print-area * {
+          visibility: visible;
+        }
+
+        #print-area {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 300px;
+          padding: 20px;
+          font-size: 12px;
+          background: white;
+          color: black;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Inventario Saiyajin 🛒</h1>
+
+      <form id="product-form">
+        <input
+          type="text"
+          id="name"
+          placeholder="Nombre del producto"
+          required
+        />
+        <input type="number" id="quantity" placeholder="Cantidad" required />
+        <input
+          type="number"
+          id="price"
+          placeholder="Precio"
+          required
+          step="0.01"
+        />
+        <button type="submit">Agregar</button>
+      </form>
+
+      <h2>Productos en Inventario</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Cantidad</th>
+            <th>Precio</th>
+            <th>Total</th>
+            <th>Eliminar</th>
+            <th>Agregar a venta</th>
+          </tr>
+        </thead>
+        <tbody id="inventory-body"></tbody>
+      </table>
+
+      <h2>Carrito de Venta 🧃</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Precio</th>
+            <th>Subtotal</th>
+            <th>Eliminar</th>
+          </tr>
+        </thead>
+        <tbody id="cart-body"></tbody>
+      </table>
+      <button id="finalize-sale" class="finalize-btn">Finalizar Venta</button>
+
+      <h2>Facturas 🧾</h2>
+      <div id="invoice-list"></div>
+      <div id="print-area" style="display: none"></div>
+    </div>
+
+    <script type="module" src="/src/inventory.js"></script>
+  </body>
+</html>
